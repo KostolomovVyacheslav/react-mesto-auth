@@ -27,4 +27,4 @@
 * **API (Application Programming Interface)**
 * **React JS (Create React App, JSX, Функциональные компоненты, Хуки)**
 
-Проект выполнен в рамках прохождения курса Веб-разработчик [Яндекс.Практикум](https://practicum.yandex.ru)
+Проект выполнен в рамках прохождения курса Веб-разработчик от [Яндекс.Практикум](https://practicum.yandex.ru)
