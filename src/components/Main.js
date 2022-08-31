@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from './Card';
 import api from '../utils/api'
 
 function Main(props) {
 
-   const [userName, setUserName] = useState();
-   const [userDescription, setUserDescription] = useState();
-   const [userAvatar, setUserAvatar] = useState();
+   const [userName, setUserName] = useState('');
+   const [userDescription, setUserDescription] = useState('');
+   const [userAvatar, setUserAvatar] = useState('');
 
    const [cards, setCards] = useState([]);
-   
 
-   React.useEffect(() => {
+   useEffect(() => {
       Promise.all([api.getUserData(), api.getInitialCards()
       ])
       .then(([userDataResult, cardsResult]) => {
@@ -24,7 +23,6 @@ function Main(props) {
          console.log(error);
       })
    }, [])
-
 
    return(
       <main className="content">

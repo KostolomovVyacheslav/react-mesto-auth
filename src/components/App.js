@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Header from './Header';
 import Main from './Main';
 import ImagePopup from './ImagePopup';
@@ -6,22 +6,16 @@ import PopupWithForm from './PopupWithForm';
 import Footer from './Footer';
 
 function App() {
-
-  // Закрытие всех попапов
-  const closeAllPopups = () => {
-    setEditProfilePopupOpen(false);
-    setEditAvatarPopupOpen(false);
-    setAddPlacePopupOpen(false);
-    setDeletePopupOpen(false);
-    setImagePopup(false);
-  };
-
   
-  // Открытие попапов редактирования аватара, профиля, добавления новой карточки
+  // Попапы редактирования аватара, профиля, добавления новой карточки
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
   const [isDeletePopupOpen, setDeletePopupOpen] = useState(false);
+
+  // Попап карточки
+  const [selectedCard, setSelectedCard] = useState(null);
+  const [isImagePopupOpen, setImagePopup] = useState(false);
 
   const handleEditAvatarClick = () => {
     setEditAvatarPopupOpen(true);
@@ -39,14 +33,18 @@ function App() {
     setDeletePopupOpen(true);
   };
 
-
-  // Попап карточки
-  const [selectedCard, setSelectedCard] = useState(null);
-  const [isImagePopupOpen, setImagePopup] = useState(false);
-
   const handleCardClick = (target) => {
     setImagePopup(true);
     setSelectedCard(target);
+  };
+
+  // Закрытие всех попапов
+  const closeAllPopups = () => {
+    setEditProfilePopupOpen(false);
+    setEditAvatarPopupOpen(false);
+    setAddPlacePopupOpen(false);
+    setDeletePopupOpen(false);
+    setImagePopup(false);
   };
 
   return (
@@ -96,6 +94,7 @@ function App() {
         name={'img-form'}
         formId={'#add-img-form'}
         buttonId={'#add-form-save-button'}
+        buttonText={'Добавить'}
       >
         <input className="popup__input popup__input_img-name" name="inputImgName" type="text" placeholder="Название" minLength="2" maxLength="30" required />
         <span className="popup__input-error"></span>

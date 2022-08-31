@@ -2,12 +2,10 @@ import React from 'react';
 
 function PopupWithForm(props) {
 
-   const stateFormPopupClass = `${props.isOpen ? 'popup_opened' : ''}`;
+   const stateFormPopupClass = `${props.isOpen && 'popup_opened'}`;
    const buttonText = `${props.buttonText ? `${props.buttonText}` : 'Сохранить'}`
 
-
    return(
-
       <div className={`popup ${stateFormPopupClass}`}>
          <div className="popup__container">
          <button type="button" className="popup__close-button" onClick={props.onClose}></button>
@@ -18,7 +16,6 @@ function PopupWithForm(props) {
          </form>
          </div>
       </div>
-
    )
 }
 

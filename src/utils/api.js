@@ -4,7 +4,6 @@ class Api {
       this._headers = headers;
    }
 
-
    _checkResponse(res) {
       if (res.ok) {
          return res.json();
@@ -12,7 +11,6 @@ class Api {
          Promise.reject(`Ошибка загрузки данных ${res.status}`);
       }
    }
-
 
    getUserData() {
       return fetch(`${this._url}/users/me`, {
@@ -24,7 +22,6 @@ class Api {
       .then(this._checkResponse)
    }
 
-
    getInitialCards() {
       return fetch(`${this._url}/cards`, {
          method: 'GET',
@@ -34,7 +31,6 @@ class Api {
       })
       .then(this._checkResponse)
    }
-
 
    addNewCard(item) {
       return fetch(`${this._url}/cards`, {
@@ -51,7 +47,6 @@ class Api {
       .then(this._checkResponse)
    }
 
-
    getUserId() {
       return fetch(`https://mesto.nomoreparties.co/v1/cohort-46/users/me`, {
          method: 'GET',
@@ -64,7 +59,6 @@ class Api {
          return result._id;
       })
    }
-
 
    editProfile(userData) {
       return fetch(`${this._url}/users/me`, {
@@ -81,7 +75,6 @@ class Api {
       .then(this._checkResponse)
    }
 
-
    changeProfileAvatar(avatarData) {
       return fetch(`${this._url}/users/me/avatar`, {
          method: 'PATCH',
@@ -96,7 +89,6 @@ class Api {
       .then(this._checkResponse)
    }
 
-
    deleteCard(id) {
       return fetch(`${this._url}/cards/${id}`, {
          method: 'DELETE',
@@ -107,7 +99,6 @@ class Api {
       })
       .then(this._checkResponse)
    }
-
 
    changeLikeStatus(isLiked, id) {
       if (isLiked) {
