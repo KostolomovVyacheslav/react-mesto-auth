@@ -14,7 +14,7 @@ function EditAvatarPopup(props) {
          avatar: inputRef.current.value
       });
 
-      inputRef.current.value = ('')
+      inputRef.current.value = ('');
    };
 
    return(
