@@ -68,8 +68,8 @@ class Api {
             'Content-Type': 'application/json'
          },
          body: JSON.stringify({
-            name: userData.inputUserName,
-            about: userData.inputUserJob
+            name: userData.name,
+            about: userData.about
           })
       })
       .then(this._checkResponse)
@@ -100,7 +100,7 @@ class Api {
       .then(this._checkResponse)
    }
 
-   changeLikeStatus(isLiked, id) {
+   changeLikeStatus(id, isLiked) {
       if (isLiked) {
          return fetch(`${this._url}/cards/${id}/likes`, {
             method: 'DELETE',
