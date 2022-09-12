@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PopupWithForm from './PopupWithForm';
 
 function AddPlacePopup(props) {
@@ -8,10 +8,15 @@ function AddPlacePopup(props) {
 
    const buttonText = `${props.renderLoading ? 'Сохранение...' : 'Сохранить'}`;
 
+   useEffect(() => {
+      setCardName('');
+      setCardLink('');
+   }, [props.isOpen]);
+
    const handleChangeCardName = (evt) => {
       setCardName(evt.target.value);
    };
-
+   
    const handleChangeCardLink = (evt) => {
       setCardLink(evt.target.value);
    };
@@ -23,9 +28,6 @@ function AddPlacePopup(props) {
          name: cardName,
          link: cardLink
       });
-
-      setCardName('');
-      setCardLink('');
    };
 
    return(

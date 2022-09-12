@@ -12,7 +12,7 @@ import api from '../utils/api';
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState('');
+  const [currentUser, setCurrentUser] = useState({});
 
   const [renderLoading, setRenderLoading] = useState(false);
 
@@ -49,7 +49,9 @@ function App() {
 
   const handleCardDelete = (card) => {
     api.deleteCard(card._id)
-    .then(setCards(cards.filter(item => item._id !== card._id)))
+    .then(() => {
+      setCards((cards) => cards.filter(item => item._id !== card._id))
+    })
     .catch(error => console.log(error))
   };
 
@@ -81,9 +83,13 @@ function App() {
     .then(res => {
       setCurrentUser(res);
       closeAllPopups();
+    })
+    .catch(error => {
+      console.log(error);
+    })
+    .finally(() => {
       setRenderLoading(false);
     })
-    .catch(error => console.log(error))
   };
 
   const handleUpdateAvatar = ({avatar}) => {
@@ -96,9 +102,13 @@ function App() {
     .then(res => {
       setCurrentUser(res);
       closeAllPopups();
+    })
+    .catch(error => {
+      console.log(error);
+    })
+    .finally(() => {
       setRenderLoading(false);
     })
-    .catch(error => console.log(error))
   };
 
   const handleAddPlaceSubmit = (item) => {
@@ -107,9 +117,13 @@ function App() {
     .then(res => {
       setCards([res, ...cards]);
       closeAllPopups();
+    })
+    .catch(error => {
+      console.log(error);
+    })
+    .finally(() => {
       setRenderLoading(false);
     })
-    .catch(error => console.log(error))
   };
 
   // Закрытие всех попапов
