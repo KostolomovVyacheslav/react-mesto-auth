@@ -111,7 +111,7 @@ function App() {
 
   const handleLogout = () => {
     setLoggedIn(false);
-    setEmail(false);
+    setEmail(null);
     localStorage.removeItem('token');
     navigate('/sign-in');
   };
