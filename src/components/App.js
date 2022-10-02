@@ -113,7 +113,7 @@ function App() {
     setLoggedIn(false);
     setEmail(false);
     localStorage.removeItem('token');
-    Navigate('/sign-in');
+    navigate('/sign-in');
   };
 
   const handleCardLike = (card) => {
