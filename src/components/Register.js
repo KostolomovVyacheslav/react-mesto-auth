@@ -26,8 +26,8 @@ function Register({onRegister}) {
       <div className='authorization'>
          <form className='authorization__form' onSubmit={handleSubmit} autoComplete="off">
             <h2 className="authorization__title">Регистрация</h2>
-            <input className="authorization__input" value={email} onChange={handleChangeEmail} placeholder="Email" required/>
-            <input className="authorization__input" value={password} onChange={handleChangePassword} placeholder="Пароль" required/>
+            <input className="authorization__input" value={email} type="email" onChange={handleChangeEmail} placeholder="Email" required/>
+            <input className="authorization__input" value={password} type="password" onChange={handleChangePassword} placeholder="Пароль" required/>
             <button className="authorization__submit-button" type="submit">Зарегестрироваться</button>
             <p className="authorization__notification">Уже зарегестрированы? <Link to="/sign-in" className="authorization__link">Войти</Link></p>
          </form>
