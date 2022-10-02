@@ -1,6 +1,9 @@
 .header {
    max-width: 880px;
 
+   display: flex;
+   justify-content: space-between;
+
    box-sizing: border-box;
    border-bottom: 1px solid #545454;
 
@@ -19,5 +22,11 @@
       width: 100%;
 
       padding-top: 28px;
+   }
+}
+
+@media screen and (max-width: 425px) {
+   .header {
+      padding: 28px 0;
    }
 }
