@@ -45,38 +45,11 @@ function App() {
   const [infoTooltip, setInfoTooltip] = useState(false);
   const [popupTitle, setPopupTitle] = useState('');
 
-  const tockenCheck = () => {
-    if (!localStorage.getItem('token')) return;
-
-    const jwt = localStorage.getItem('token');
-
-    authorization.getContent(jwt)
-    .then(res => {
-      setLoggedIn(true);
-      setEmail(res.data.email);
-      navigate('/');
-    })
-    .catch(error => {
-      console.log(error)
-    })
-  };
-
-  useEffect(() => {
-    tockenCheck();
-  }, []);
-
-  useEffect(() => {
-    Promise.all([api.getUserData(), api.getInitialCards()])
-    .then(([userDataResult, cardsResult]) => {
-        setCurrentUser(userDataResult)
-        setCards(cardsResult)
-    })
-    .catch(error => console.log(error))
-  }, [])
+  const jwt = localStorage.getItem('token');
 
   const handleRegister = (data) => {
     authorization.register(data)
-    .then(res => {
+    .then(() => {
       setPopupTitle('Вы успешно зарегистрировались!');
       navigate('/sign-in');
       setIsAuthSuccess(true);
@@ -104,6 +77,39 @@ function App() {
       handleInfoTooltip()
     })
   };
+
+  const tockenCheck = () => {
+    if (!jwt) return;
+
+    authorization.getContent(jwt)
+    .then(res => {
+      setLoggedIn(true);
+      setEmail(res.data.email);
+      navigate('/');
+      console.log(loggedIn)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  };
+
+  useEffect(() => {
+    tockenCheck();
+  }, []);
+
+  useEffect(() => {
+    if (loggedIn) {
+      console.log(loggedIn)
+      Promise.all([api.getUserData(), api.getInitialCards()])
+      .then(([userDataResult, cardsResult]) => {
+        setCurrentUser(userDataResult)
+        setCards(cardsResult)
+        console.log(jwt, email)
+        console.log('загрузка')
+      })
+      .catch(error => console.log(error))
+      }
+  }, []);
 
   const handleInfoTooltip = () => {
     setInfoTooltip(true);

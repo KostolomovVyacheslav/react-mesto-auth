@@ -43,9 +43,9 @@ function EditProfilePopup(props) {
         buttonId={'#profile-form-save-button'}
         buttonText={buttonText}
       >
-         <input className="popup__input popup__input_name" name="inputUserName" type="text" value={userName} onChange={handleChangeName} placeholder="Как Вас зовут?" minLength="2" maxLength="40" required />
+         <input className="popup__input popup__input_name" name="inputUserName" type="text" value={userName || ''} onChange={handleChangeName} placeholder="Как Вас зовут?" minLength="2" maxLength="40" required />
          <span className="popup__input-error"></span>
-         <input className="popup__input popup__input_job" name="inputUserJob" type="text" value={userDescription} onChange={handleChangeDescription} placeholder="Расскажите о себе..." minLength="2" maxLength="200" required />
+         <input className="popup__input popup__input_job" name="inputUserJob" type="text" value={userDescription || ''} onChange={handleChangeDescription} placeholder="Расскажите о себе..." minLength="2" maxLength="200" required />
          <span className="popup__input-error"></span>
       </PopupWithForm>
    )
