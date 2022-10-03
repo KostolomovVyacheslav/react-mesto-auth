@@ -86,7 +86,6 @@ function App() {
       setLoggedIn(true);
       setEmail(res.data.email);
       navigate('/');
-      console.log(loggedIn)
     })
     .catch(error => {
       console.log(error)
@@ -99,17 +98,14 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-      console.log(loggedIn)
       Promise.all([api.getUserData(), api.getInitialCards()])
       .then(([userDataResult, cardsResult]) => {
         setCurrentUser(userDataResult)
         setCards(cardsResult)
-        console.log(jwt, email)
-        console.log('загрузка')
       })
       .catch(error => console.log(error))
-      }
-  }, []);
+    }
+  }, [loggedIn]);
 
   const handleInfoTooltip = () => {
     setInfoTooltip(true);
