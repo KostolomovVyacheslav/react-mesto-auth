@@ -59,7 +59,7 @@ function App() {
       setIsAuthSuccess(false);
     })
     .finally(() => {
-      handleInfoTooltip()
+      handleInfoTooltip();
     })
   };
 
@@ -68,13 +68,13 @@ function App() {
     .then(res => {
       localStorage.setItem('token', res.token);
       setLoggedIn(true);
-      setEmail(data.email)
+      setEmail(data.email);
       navigate('/');
     })
     .catch(() => {
       setPopupTitle('Что-то пошло не так! Попробуйте ещё раз.');
       setIsAuthSuccess(false);
-      handleInfoTooltip()
+      handleInfoTooltip();
     })
   };
 
@@ -88,7 +88,7 @@ function App() {
       navigate('/');
     })
     .catch(error => {
-      console.log(error)
+      console.log(error);
     })
   };
 
@@ -100,10 +100,10 @@ function App() {
     if (loggedIn) {
       Promise.all([api.getUserData(), api.getInitialCards()])
       .then(([userDataResult, cardsResult]) => {
-        setCurrentUser(userDataResult)
-        setCards(cardsResult)
+        setCurrentUser(userDataResult);
+        setCards(cardsResult);
       })
-      .catch(error => console.log(error))
+      .catch(error => console.log(error));
     }
   }, [loggedIn]);
 
@@ -123,17 +123,17 @@ function App() {
 
     api.changeLikeStatus(card._id, isLiked)
     .then((newCard) => {
-      setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
+      setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error));
   };
 
   const handleCardDelete = (card) => {
     api.deleteCard(card._id)
     .then(() => {
-      setCards((cards) => cards.filter(item => item._id !== card._id))
+      setCards((cards) => cards.filter(item => item._id !== card._id));
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error));
   };
 
   const handleEditAvatarClick = () => {
